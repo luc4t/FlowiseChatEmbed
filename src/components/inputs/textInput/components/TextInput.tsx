@@ -28,7 +28,7 @@ type Props = {
 };
 
 const defaultBackgroundColor = '#ffffff';
-const defaultTextColor = '#303235';
+const defaultTextColor = '#124265';
 // CDN link for default send sound
 const defaultSendSound = 'https://cdn.jsdelivr.net/gh/FlowiseAI/FlowiseChatEmbed@latest/src/assets/send_message.mp3';
 
@@ -116,7 +116,7 @@ export const TextInput = (props: Props) => {
 
   return (
     <div
-      class="w-full h-auto max-h-[192px] min-h-[56px] flex flex-col items-end justify-between chatbot-input border border-[#eeeeee]"
+      class="w-full h-auto max-h-[192px] min-h-[56px] flex flex-col items-end justify-between chatbot-input rounded-xl border border-[#eeeeee]"
       data-testid="input"
       style={{
         margin: 'auto',

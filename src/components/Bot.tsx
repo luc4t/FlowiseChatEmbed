@@ -949,7 +949,7 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
       }
     }
     if (!acceptFile) {
-      alert(`Cannot upload file. Kindly check the allowed file types and maximum allowed size.`);
+      alert(`Only images are allowed for upload. Please upload a valid image file.`);
     }
     return acceptFile;
   };
@@ -1159,11 +1159,11 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
     if (item.mime.startsWith('image/')) {
       return (
         <button
-          class="group w-12 h-12 flex items-center justify-center relative rounded-[10px] overflow-hidden transition-colors duration-200"
+          class="group w-12 h-12 flex items-center justify-center relative rounded-xl overflow-hidden transition-colors duration-200"
           onClick={() => handleDeletePreview(item)}
         >
           <img class="w-full h-full bg-cover" src={item.data as string} />
-          <span class="absolute hidden group-hover:flex items-center justify-center z-10 w-full h-full top-0 left-0 bg-black/10 rounded-[10px] transition-colors duration-200">
+          <span class="absolute hidden group-hover:flex items-center justify-center z-10 w-full h-full top-0 left-0 bg-black/10 rounded-xl transition-colors duration-200">
             <TrashIcon />
           </span>
         </button>
@@ -1229,8 +1229,8 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
             style={{
               background: props.bubbleBackgroundColor,
               color: props.bubbleTextColor,
-              'border-top-left-radius': props.isFullPage ? '0px' : '6px',
-              'border-top-right-radius': props.isFullPage ? '0px' : '6px',
+              'border-top-left-radius': props.isFullPage ? '0px' : '12px',
+              'border-top-right-radius': props.isFullPage ? '0px' : '12px',
             }}
           >
             <Show when={props.titleAvatarSrc}>
@@ -1240,7 +1240,7 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
               </>
             </Show>
             <Show when={props.title}>
-              <span class="px-3 whitespace-pre-wrap font-semibold max-w-full">{props.title}</span>
+              <span class="px-3 whitespace-pre-wrap max-w-full">{props.title}</span>
             </Show>
             <div style={{ flex: 1 }} />
             <DeleteButton
@@ -1325,7 +1325,7 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
               }}
             </For>
           </div>
-          <Show when={messages().length === 1}>
+          <Show when={messages().length < 8}>
             <Show when={starterPrompts().length > 0}>
               <div class="w-full flex flex-row flex-wrap px-5 py-[10px] gap-2">
                 <For each={[...starterPrompts()]}>
@@ -1353,7 +1353,7 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
                     <div class="w-full flex items-center justify-between gap-3">
                       <span class="text-base">To record audio, use modern browsers like Chrome or Firefox that support audio recording.</span>
                       <button
-                        class="py-2 px-4 justify-center flex items-center bg-red-500 text-white rounded-md"
+                        class="py-2 px-4 justify-center flex items-center bg-red-500 text-white rounded-xl"
                         type="button"
                         onClick={() => onRecordingCancelled()}
                       >
@@ -1417,12 +1417,13 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
               />
             )}
           </div>
-          <Badge
+          {/* <Badge
             footer={props.footer}
             badgeBackgroundColor={props.badgeBackgroundColor}
             poweredByTextColor={props.poweredByTextColor}
             botContainer={botContainer}
-          />
+          /> */}
+          <span class="w-full text-center px-[10px] pt-[6px] pb-[10px] m-auto text-[13px]"> </span>
         </div>
       </div>
       {sourcePopupOpen() && <Popup isOpen={sourcePopupOpen()} value={sourcePopupSrc()} onClose={() => setSourcePopupOpen(false)} />}
